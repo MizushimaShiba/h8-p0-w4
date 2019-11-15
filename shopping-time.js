@@ -6,6 +6,9 @@
 
 function shoppingTime(memberId, money) {
   // you can only write your code here!
+  if (memberId == null && money == null) {
+    return `Mohon maaf, toko X hanya berlaku untuk member saja`
+  }
   var obj = {
     sepatu : 1500000,
     bajuZoro : 500000,
@@ -19,34 +22,29 @@ function shoppingTime(memberId, money) {
   if (memberId != '') {
     if (moneyBackup >= 50000) {
       for (var i = 0; i < keys.length; i++) {
-        var counter = true
-        if (money >= obj.sepatu && counter == true) {
+        if (money >= obj.sepatu && barang[barang.length - 1] != 'Sepatu') {
           money -= obj.sepatu
           barang.push(`Sepatu`)
-          counter = false
-        } else if (money >= obj.bajuZoro && counter == true) {
+        } else if (money >= obj.bajuZoro && barang[barang.length - 1] != 'Baju Zoro') {
           money -= obj.bajuZoro
           barang.push(`Baju Zoro`)
-          counter = false
-        } else if (money >= obj.bajuHN && counter == true) {
+        } else if (money >= obj.bajuHN && barang[barang.length - 1] != 'Baju H&N') {
           money -= obj.bajuHN
           barang.push(`Baju H&N`)
-          counter = false
-        } else if (money >= obj.sweater && counter == true) {
+        } else if (money >= obj.sweater && barang[barang.length - 1] != 'Sweater') {
           money -= obj.sweater
           barang.push(`Sweater`)
-          counter = false
-        } else if (money >= obj.casing && counter == true) {
+        } else if (money >= obj.casing && barang[barang.length - 1] != 'Casing') {
           money -= obj.casing
           barang.push(`Casing`)
-          counter = false
         }
-        var result = { memberId: `${memberId}`,
-        money: moneyBackup,
-        listPurchased: barang,
-        changeMoney: money
-        }  
       }
+      let result = { memberId: `${memberId}`,
+      money: moneyBackup,
+      listPurchased: barang,
+      changeMoney: money
+      }
+      console.log(result);
     } else {
       console.log(`mohon maaf uang tidak cukup`);
     }
@@ -58,14 +56,13 @@ function shoppingTime(memberId, money) {
   
   
   
-  console.log(result);
   
   
   
 }
 
 // TEST CASES
-console.log(shoppingTime('1820RzKrnWn08', 2475000));
+console.log(shoppingTime('1820RzKrnWn08', 24750000));
   //{ memberId: '1820RzKrnWn08',
   // money: 2475000,
   // listPurchased:
@@ -81,6 +78,6 @@ console.log(shoppingTime('82Ku8Ma742', 170000));
 // listPurchased:
 //  [ 'Casing Handphone' ],
 // changeMoney: 120000 }
-// console.log(shoppingTime('', 2475000)); //Mohon maaf, toko X hanya berlaku untuk member saja
-// console.log(shoppingTime('234JdhweRxa53', 15000)); //Mohon maaf, uang tidak cukup
-// console.log(shoppingTime()); ////Mohon maaf, toko X hanya berlaku untuk member saja
+console.log(shoppingTime('', 2475000)); //Mohon maaf, toko X hanya berlaku untuk member saja
+console.log(shoppingTime('234JdhweRxa53', 15000)); //Mohon maaf, uang tidak cukup
+console.log(shoppingTime()); ////Mohon maaf, toko X hanya berlaku untuk member saja
